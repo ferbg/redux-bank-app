@@ -20,6 +20,20 @@
     balance: reducerBalance
   });
 
+  const deposit = (payload) => {
+    return {
+      type: 'deposit',
+      payload
+    }
+  }
+
+  const withdraw = (payload) => {
+    return {
+      type: 'withdraw',
+      payload
+    }
+  }
+
   function initApp() {
 
     store = createStore(
@@ -28,12 +42,13 @@
       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     );
 
-
     document.getElementById('withdraw-button').addEventListener( 'click', (event) => {
+      store.dispatch(withdraw(10));
       event.preventDefault();
     } );
 
     document.getElementById('deposit-button').addEventListener( 'click', (event) => {
+      store.dispatch(deposit(10));
       event.preventDefault();
     } );
 
